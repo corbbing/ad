@@ -1,0 +1,42 @@
+<div id="frame">
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var ads = [{
+	file:"dreamscape168.js",
+	weight: 1
+},{
+	file:"unlock.js",
+	weight: 1
+},
+];
+
+
+function loadRandom(){
+	function loadAd(src){
+		var source = $("<script/>");
+		source.attr("type","text/javascript")
+		source[0].src = "/s/"+src;
+		$("#frame").append(source);
+	}
+	var c = 0;
+	var c2 = 0;
+	var r = Math.random();
+	for (var i = 0; i < ads.length; i++) {
+		c+=ads[i].weight;
+	};
+	for (var i = 0; i < ads.length; i++) {
+		c2+=ads[i].weight;
+		if ((c2/c) > r){
+			loadAd(ads[i].file);
+			return null;
+		}
+	};
+}
+
+loadRandom();
+
+</script>
